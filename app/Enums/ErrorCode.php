@@ -10,10 +10,11 @@ class ErrorCode
 
     // Ressources
     const EVENT_NOT_FOUND  = ['code' => 'EVENT_NOT_FOUND',  'message' => 'Évènement non trouvé'];
-    const USER_NOT_FOUND   = ['code' => 'USER_NOT_FOUND',   'message' => 'Utilisateur non trouvé'];
+    const REGISTER_NOT_FOUND   = ['code' => 'REGISTER_NOT_FOUND',   'message' => 'Inscription non trouvée'];
+    const CAPACITY_REACHED       = ['code' => 'CAPACITY_REACHED',       'message' => "Cet évènement est complet"];
 
     // Validation
-    const DUPLICATE_EMAIL  = ['code' => 'DUPLICATE_EMAIL',  'message' => 'Cet email est déjà utilisé'];
+    const DUPLICATE_EMAIL  = ['code' => 'DUPLICATE_EMAIL',  'message' => 'Cette adresse email est déjà enregistrée pour cet évènement'];
     const EMAIL_REQUIRED   = ['code' => 'EMAIL_REQUIRED',   'message' => "L'email est obligatoire"];
     const EMAIL_INVALID    = ['code' => 'EMAIL_INVALID',    'message' => "Format d'email invalide"];
     const PASSWORD_REQUIRED= ['code' => 'PASSWORD_REQUIRED','message' => 'Le mot de passe est obligatoire'];
@@ -30,4 +31,9 @@ class ErrorCode
     const CAPACITY_MIN_1   = ['code' => 'CAPACITY_MIN_1',   'message' => 'La capacité doit être superieure à 0'];
     const LOCATION_REQUIRED = ['code' => 'LOCATION_REQUIRED', 'message' => 'Le lieu est obligatoire'];
     const LOCATION_STRING = ['code' => 'LOCATION_STRING', 'message' => 'Le lieu doit être une chaîne de caractères'];
+
+    const FIRST_NAME_REQUIRED = ['code' => 'FIRST_NAME_REQUIRED', 'message' => 'Le prénom est obligatoire'];
+    const FIRST_NAME_STRING = ['code' => 'FIRST_NAME_STRING', 'message' => 'Le prénom doit être une chaîne de caractères'];
+    const LAST_NAME_REQUIRED = ['code' => 'LAST_NAME_REQUIRED', 'message' => 'Le nom est obligatoire'];
+    const LAST_NAME_STRING = ['code' => 'LAST_NAME_STRING', 'message' => 'Le nom doit être une chaîne de caractères'];
 }

@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class EventRegisterRequest extends FormRequest
+class InscriptionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,30 +24,23 @@ class EventRegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
-            'title' => 'required|string|max:100',
-            'description' => 'nullable|string',
-            'date' => 'required|date',
-            'location' => 'required|string',
-            'capacity' => 'required|integer|min:1',
+            'firstName' => 'required|string',
+            'lastName' => 'required|string',
+            'email' => 'required|email',
         ];
     }
-    public function messages(): array
+    public function messages()
     {
         return [
-            'title.required' => "TITLE_REQUIRED",
-            'title.string' => "TITLE_STRING",
-            'title.max' => "TITLE_MAX_100",
-            'date.required' => "DATE_REQUIRED",
-            'date.date' => "DATE_DATE",
-            'location.required' => "LOCATION_REQUIRED",
-            'location.string' => "LOCATION_STRING",
-            'capacity.required' => "CAPACITY_REQUIRED",
-            'capacity.integer' => "CAPACITY_INTEGER",
-            'capacity.min' => "CAPACITY_MIN_1",
+            'firstName.required' => "FIRST_NAME_REQUIRED",
+            'firstName.string' => "FIRST_NAME_STRING",
+            'lastName.required' => "LAST_NAME_REQUIRED",
+            'lastName.string' => "LAST_NAME_STRING",
+            'email.required' => "EMAIL_REQUIRED",
+            'email.email' => "EMAIL_INVALID",
         ];
     }
- /*    protected function failedValidation(Validator $validator): void
+     /*    protected function failedValidation(Validator $validator): void
     {
         $code      = $validator->errors()->first();
         $errorCode = constant("App\\Enums\\ErrorCode::$code");

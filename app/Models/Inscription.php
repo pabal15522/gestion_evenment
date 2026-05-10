@@ -18,4 +18,9 @@ class Inscription extends Model
     {
         return $this->belongsTo(Evenement::class, 'eventId');           
     }
+    public function inscriptions()
+    {
+        return $this->hasMany(Inscription::class, 'eveentIdd');
+    }
+
 }

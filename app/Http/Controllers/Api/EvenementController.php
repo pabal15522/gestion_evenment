@@ -8,6 +8,7 @@ use App\Http\Requests\EventRegisterRequest;
 use App\Models\Evenement;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class EvenementController extends Controller
@@ -15,7 +16,9 @@ class EvenementController extends Controller
     //
     public function index()
     {
-        $events = Evenement::all();
+        //$events = Evenement::all();
+       $events = Evenement::withCount('inscriptions')->get();
+
         return $this->success($events);
     }
 
