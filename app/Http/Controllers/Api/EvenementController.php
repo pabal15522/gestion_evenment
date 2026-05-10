@@ -14,12 +14,24 @@ use Illuminate\Support\Facades\Validator;
 class EvenementController extends Controller
 {
     //
-    public function index()
+    public function index(Request $request): JsonResponse
     {
-        //$events = Evenement::all();
-       $events = Evenement::withCount('inscriptions')->get();
+      
+       $events = Evenement::withCount('inscriptions');
+        if ($request->filled('search')) {
+                $search = $request->search;
+                $events->where(function ($q) use ($search) {
+                    $q->where('title', 'like', "%{$search}%")
+                    ->orWhere('description', 'like', "%{$search}%")
+                    ->orWhere('location', 'like', "%{$search}%");
+                });
+            }
 
-        return $this->success($events);
+            if ($request->filled('date')) {
+                $events->where('date','like', "%{$request->date}%");
+            }
+        return $this->success($events->get());
+
     }
 
     public function store(EventRegisterRequest $request): JsonResponse
